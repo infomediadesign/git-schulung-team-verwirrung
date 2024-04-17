@@ -12,7 +12,7 @@ class Player : public GameObject{
 public:
     void Update() override;
     void Draw() override;
-    Player(Scene* scene);
+    Player(Scene *scene);
 protected:
 
 };

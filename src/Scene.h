@@ -17,10 +17,10 @@ public:
     void draw();
     Scene(const char * filename);
     //Collision detection functions
-    bool touchesWall(Vector2 pos, Vector2 size);
+    bool touchesWall(Vector2 pos, float size);
     bool touchesWall(Vector2 pos);
     Vector2 touchWallPosition(Vector2 pos, Vector2 size);
-    Rectangle getWallAt(Vector2 pos, Vector2 size);
+    Rectangle getWallAt(Vector2 pos);
     std::vector<GameObject*> getGameObjectsAt(Vector2 pos, Vector2 size);
     //game object handling functions
     void addGameObject(GameObject* object);
@@ -30,6 +30,8 @@ public:
 
 
     int getTileAt(float x, float y);
+
+    Rectangle getTouchedWall(Vector2 position, float radius);
 
 protected:
     std::vector<GameObject*> objects;

@@ -18,7 +18,10 @@ public:
 
     Vector2 getPosition() const;
     Scene* scene;
+    GameObject(Scene* scene);
 protected:
+    //static uint32_t objectsCreated;
+
     int64_t id;
     Vector2 position;
     float size;

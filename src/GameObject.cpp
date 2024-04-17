@@ -3,3 +3,8 @@
 //
 
 #include "GameObject.h"
+
+GameObject::GameObject(Scene *scene) {
+    this->scene = scene;
+    //objectsCreated++;
+}
