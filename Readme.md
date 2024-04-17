@@ -10,7 +10,7 @@
 
 # raylibstarter - minimal letterbox edition
 
-[![CMakeBuilds](https://github.com/chfhhd/raylibstarter-letterboxed/actions/workflows/cmake.yml/badge.svg)](https://github.com/chfhhd/raylibstarter-letterboxed/actions/workflows/cmake.yml)
+[![CMakeBuilds](https://github.com/chfhhd/raylibstarter-letterboxed/actions/workflows/cmake.yml/badge.svg)](https://github.com/infomediadesign/git-schulung-team-verwirrung.git)
 
 A simple raylib project template for CMake and C/C++ including letterbox rendering and a fullscreen mode.
 
