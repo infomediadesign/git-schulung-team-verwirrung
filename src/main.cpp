@@ -4,12 +4,13 @@
 #include "raylib.h"
 #include "config.h"
 #include <cmath>
+#include "Scene.h"
 
 int main() {
     // Raylib initialization
     // Project name, screen size, fullscreen mode etc. can be specified in the config.h.in file
     SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_VSYNC_HINT);
-    InitWindow(Game::ScreenWidth, Game::ScreenHeight, Game::PROJECT_NAME);
+    InitWindow(960, 520, "Das GAME");
     SetTargetFPS(60);
 
 #ifdef GAME_START_FULLSCREEN
@@ -23,6 +24,8 @@ int main() {
     RenderTexture2D canvas = LoadRenderTexture(Game::ScreenWidth, Game::ScreenHeight);
     float renderScale{}; // this and the line below are relevant to drawing later.
     Rectangle renderRec{};
+    auto scene = new Scene(nullptr);
+
 
     // Main game loop
     while (!WindowShouldClose()) // Detect window close button or ESC key
@@ -40,21 +43,21 @@ int main() {
         // This is where YOUR logic code should go
         // ...
         // ...
-
+        scene->update();
         BeginDrawing();
         // You can draw on the screen between BeginDrawing() and EndDrawing()
-        // For the letterbox we draw on canvas instad
+        // For the letterbox we draw on canvas instead
+
+
         BeginTextureMode(canvas);
         { //Within this block is where we draw our app to the canvas and YOUR code goes.
             ClearBackground(WHITE);
-            DrawText("Hello, world!", 10, 10, 30, LIGHTGRAY);
+            scene->draw();
+            /*DrawText("Hello, world!", 10, 10, 30, LIGHTGRAY);
             DrawTexture(myTexture, 10, 100, WHITE);
+            DrawLine(0,0,sin(GetTime()) * 100 + 80, cos(GetTime()) * 100 + 70, RED);
+             */
 
-            DrawCircle(
-                    sin(GetTime()) * 100 + GetScreenWidth() / 2,
-                    cos(GetTime()) * 100 + GetScreenHeight() / 2,
-                    10, RED
-                    );
         }
         EndTextureMode();
         //The following lines put the canvas in the middle of the window and have the negative as black
