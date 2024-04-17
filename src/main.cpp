@@ -2,8 +2,8 @@
 #include <algorithm>
 
 #include "raylib.h"
-
 #include "config.h"
+#include <cmath>
 
 int main() {
     // Raylib initialization
