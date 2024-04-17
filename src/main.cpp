@@ -49,6 +49,12 @@ int main() {
             ClearBackground(WHITE);
             DrawText("Hello, world!", 10, 10, 30, LIGHTGRAY);
             DrawTexture(myTexture, 10, 100, WHITE);
+
+            DrawCircle(
+                    sin(GetTime()) * 100 + GetScreenWidth() / 2,
+                    cos(GetTime()) * 100 + GetScreenHeight() / 2,
+                    10, RED
+                    );
         }
         EndTextureMode();
         //The following lines put the canvas in the middle of the window and have the negative as black
