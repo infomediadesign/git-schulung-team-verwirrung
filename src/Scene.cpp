@@ -7,12 +7,21 @@
 #include "GameObjects/Player.h"
 #include "config.h"
 #include "raymath.h"
+#include "Particle.h"
 
 void Scene::update() {
     for (auto &gameObject : objects) {
         gameObject->Update();
     }
-
+    for (auto it = particles.begin(); it != particles.end();) {
+        (*it)->update();
+        if ((*it)->lifeTimeOver()) {
+            delete *it;
+            it = particles.erase(it);
+        } else {
+            it++;
+        }
+    }
 }
 
 void Scene::draw() {
@@ -21,12 +30,16 @@ void Scene::draw() {
     for (int y = 0; y < mapHeight; y++) {
         for (int x = 0; x < mapWidth; x++) {
             int tile = tileMap[y * mapWidth + x];
-            DrawRectangle(x * 16, y * 16, 16, 16, tile == 0 ? WHITE : tile == 1 ? GRAY : tile == 2 ? DARKGRAY : BLACK);
+            DrawRectangle(x * 16, y * 16, 16, 16, tile == 3 ? BLACK : WHITE);
         }
     }
 
     for (auto &gameObject : objects) {
         gameObject->Draw();
+    }
+
+    for (auto &particle : particles) {
+        particle->draw();
     }
 
     //draw foreground
@@ -90,4 +103,12 @@ Rectangle Scene::getTouchedWall(Vector2 position, float radius) {
         }
     }
     return closestWall;
+}
+
+Vector2 Scene::getSize() {
+    return {static_cast<float>(mapWidth * 16), static_cast<float>(mapHeight * 16)};
+}
+
+void Scene::addParticle(Particle *particle) {
+    particles.push_back(particle);
 }

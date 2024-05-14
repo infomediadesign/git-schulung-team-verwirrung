@@ -79,6 +79,13 @@ int main() {
         if (IsKeyDown(KEY_LEFT_CONTROL) && IsKeyDown(KEY_S)) {
             DrawText(TextFormat("Render scale: %.0f", renderScale), 10, 10, 20, LIGHTGRAY);
         }
+        //Draw inputs of WASD
+        Color PressedColor = RED;
+        Color NotPressedColor = ColorAlpha(LIGHTGRAY,0.9f);
+        DrawRectangle(30, 10, 20, 20, IsKeyDown(KEY_W) ? PressedColor : NotPressedColor);
+        DrawRectangle(10, 30, 20, 20, IsKeyDown(KEY_A) ? PressedColor : NotPressedColor);
+        DrawRectangle(30, 50, 20, 20, IsKeyDown(KEY_S) ? PressedColor : NotPressedColor);
+        DrawRectangle(50, 30, 20, 20, IsKeyDown(KEY_D) ? PressedColor : NotPressedColor);
         EndDrawing();
     } // Main game loop end
 

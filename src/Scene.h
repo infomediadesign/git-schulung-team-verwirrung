@@ -22,6 +22,7 @@ public:
     Vector2 touchWallPosition(Vector2 pos, Vector2 size);
     Rectangle getWallAt(Vector2 pos);
     std::vector<GameObject*> getGameObjectsAt(Vector2 pos, Vector2 size);
+    Vector2 getSize();
     //game object handling functions
     void addGameObject(GameObject* object);
     GameObject* getGameObject(int64_t id);

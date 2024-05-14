@@ -14,7 +14,7 @@ public:
     void Draw() override;
     Player(Scene *scene);
 protected:
-
+    Vector2 lookDirection = {1, 0};
 };
 
 
